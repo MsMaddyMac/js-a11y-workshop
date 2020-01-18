@@ -5,8 +5,8 @@ import './dropdown.scss';
 
 const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
 	// useRef() is part of the React package and allows you to create references to areas for focus management. It marks an element as important for focus.
-	const activatorRef = useRef(null);
-	const dropdownListRef = useRef(null);
+	const activatorRef = useRef();
+	const dropdownListRef = useRef();
 	const [isOpen, setIsOpen] = useState(false);
 
 	const clickHandler = () => {
@@ -21,13 +21,12 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
 
 	const clickOutsideHandler = e => {
 		// e.target
-		if (
-			dropdownListRef.current.contains(e.target) ||
-			activatorRef.current.contains(e.target)
-		) {
-			return;
-		}
-		setIsOpen(false);
+    if (dropdownListRef.current.contains(e.target) ||
+    activatorRef.current.contains(e.target)) {
+      return
+    } else {
+      setIsOpen(false);
+    }
 	};
 	useEffect(() => {
 		if (isOpen) {
