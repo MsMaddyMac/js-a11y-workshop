@@ -54,7 +54,9 @@ const Dropdown = ({ activatorText = 'Dropdown', items = [] }) => {
 				id='dropdown1'
 				className={`dropdown-itemList ${isOpen ? 'active' : ''}`}
 				// if dropdown (state) is open set class to active if not pass an empty string so it doesn't add a css class.
-				ref={dropdownListRef}
+        ref={dropdownListRef}
+        role='list'
+        // voice over will announce this is a list 
 			>
 				{items.map((item, index) => {
 					return (
